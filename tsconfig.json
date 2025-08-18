@@ -9,6 +9,6 @@
       "resolveJsonModule": true,
       "skipLibCheck": true
     },
-    "include": ["src", "security"]
+    "include": ["src", "security", "src/__tests__"]
   }
   
