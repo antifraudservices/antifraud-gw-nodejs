@@ -43,5 +43,5 @@ export const testConsentRegisterOrganizationSchemaJsonLD = {
     "identifier": "" // no previously registered on the federated network
   },
   "instrument": "https://example.org/consent/form.pdf",
-  "purpose": "https://terminology.hl7.org/CodeSystem/v3-ActReason|SRVC" // rovision of a service to an individual or organization
+  "purpose": "https://terminology.hl7.org/CodeSystem/v3-ActReason|SRVC" // provision of a service to an individual or organization
 }

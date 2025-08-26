@@ -78,7 +78,7 @@ describe('Asynchronous FAPI Flow (/tenant/cds-...)', () => {
       iss: 'test-issuer',
       aud: tenantId, // Audience must match the tenant in the URL
       thid: thid,
-      type: 'fhir+json', // Request a FHIR Bundle response
+      type: '<some>+json', // The data format for the body
       body: { message: 'This is the content of the request' }
     };
     const encodedPayload = Buffer.from(JSON.stringify(jwsPayload)).toString('base64url');
