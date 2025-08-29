@@ -1,4 +1,5 @@
 // src/security/middleware/parseCdsRequest.ts
+// Copyright 2025 Antifraud Services Inc. under the Apache License, Version 2.0.
 
 import { Request, Response, NextFunction } from 'express';
 import { extractHttpRequestDataAsJson, DataInRequest } from '../../utils/http-parser';

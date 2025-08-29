@@ -1,4 +1,5 @@
 // src/routes/tenant.ts
+// Copyright 2025 Antifraud Services Inc. under the Apache License, Version 2.0.
 
 import {v4 as uuidv4} from 'uuid';
 import express, { Request, Response, NextFunction } from 'express';

@@ -1,3 +1,5 @@
+// Copyright 2025 Antifraud Services Inc. under the Apache License, Version 2.0.
+
 import { JobRequest } from "../../adapters/queue";
 
 // src/security/interfaces/Cryptography.types.ts

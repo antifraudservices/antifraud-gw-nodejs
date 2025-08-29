@@ -1,4 +1,5 @@
 // src/managers/cryptoEncode.ts
+// Copyright 2025 Antifraud Services Inc. under the Apache License, Version 2.0.
 
 // Function to encode a payload into a JWT with the header "alg=none"
 // senderTenant signs and encrypts to recipient(s)

@@ -1,3 +1,6 @@
+// src/auth/GoogleTokenVerifier.ts
+// Copyright 2025 Antifraud Services Inc. under the Apache License, Version 2.0.
+
 import { OAuth2Client } from 'google-auth-library';
 const client = new OAuth2Client();
 

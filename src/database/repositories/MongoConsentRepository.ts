@@ -1,4 +1,5 @@
 // src/database/repositories/MongoConsentRepository.ts
+// Copyright 2025 Antifraud Services Inc. under the Apache License, Version 2.0.
 
 import { ConsentRepository, ConsentRecord } from './ConsentRepository';
 import { getMongoDb } from '../mongo';

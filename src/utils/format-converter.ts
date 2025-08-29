@@ -1,4 +1,5 @@
 // src/utils/format-converter.ts
+// Copyright 2025 Antifraud Services Inc. under the Apache License, Version 2.0.
 
 /**
  * Safely joins a base URL and a path without adding extra slashes.

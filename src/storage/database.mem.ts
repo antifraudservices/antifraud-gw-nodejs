@@ -1,16 +1,15 @@
 // src/storage/database.mem.ts
-import { DatabaseAbstract } from "./database.abstract";
+
+/* Copyright (c) Connecting Solution & Applications Ltd., Conéctate Soluciones y Aplicaciones SL */
+/* Apache License 2.0 */
+
+import { RecordBase } from "../models/resource-document";
+import { DatabaseAbstract, VaultConfig } from "./database.abstract";
 
 // In a real project, these helpers would be in their own files
 const generateRev = (container: any, epoch: number) => `${epoch}-${Math.random()}`;
 const convertHttpQueryToObject = (query: string) => ({});
 
-export interface RecordBase {
-  _id: string;
-  _deleted?: boolean;
-  _rev?: string;
-  [key: string]: any;
-}
 export interface VaultsDataMem extends Map<string, RecordBase> { }
 
 export class DatabaseMem extends DatabaseAbstract {
@@ -36,6 +35,10 @@ export class DatabaseMem extends DatabaseAbstract {
     return this.vaultConfigsMap.has(vaultId);
   }
 
+  async getVaultConfig(vaultId: string): Promise<VaultConfig | undefined> {
+    return this.vaultConfigsMap.get(vaultId);
+  }
+
   // NOTE: In-memory sections are simplified and don't strictly separate data.
   // The concept is better realized in the Firestore adapter.
   public async createNewSection(vaultId: string, sectionId: string): Promise<boolean> { return this.vaultExists(vaultId); }
@@ -47,7 +50,7 @@ export class DatabaseMem extends DatabaseAbstract {
       const vault = this.vaultsMap.get(vaultId);
       if(!vault) return Promise.resolve([]);
       const ids: string[] = [];
-      vault.forEach(container => ids.push(container._id));
+      vault.forEach(container => ids.push(container.id));
       return Promise.resolve(ids);
   }
   public getContainersInSection(vaultId: string, sectionId: string, excludeRecordTypes?: string[]): Promise<any[]> {
@@ -61,7 +64,7 @@ export class DatabaseMem extends DatabaseAbstract {
   public async get(vaultId: string, containerId: string): Promise<RecordBase | undefined> {
     const vaultData = this.vaultsMap.get(vaultId);
     if (!vaultData) return undefined;
-    return Array.from(vaultData.values()).find(c => c._id === containerId);
+    return Array.from(vaultData.values()).find(c => c.id === containerId);
   }
 
   public async put(vaultId: string, containers: RecordBase[], sectionId: string = '_default'): Promise<boolean> {
@@ -73,10 +76,10 @@ export class DatabaseMem extends DatabaseAbstract {
     }
     const currentEpoch = Date.now();
     for (let container of containers) {
-      if (!container._id) throw new Error("Container must have an _id");
+      if (!container.id) throw new Error("Container must have an id");
       container._rev = generateRev(container, currentEpoch);
       // In-memory doesn't use sections, just puts it in the vault
-      vaultData.set(container._id, container);
+      vaultData.set(container.id, container);
     }
     return true;
   }
@@ -96,3 +99,4 @@ export class DatabaseMem extends DatabaseAbstract {
   async getHistory(vaultId: string, containerId: string): Promise<RecordBase[]> { return []; }
   async query(vaultId: string, query: any): Promise<RecordBase[]> { return []; }
 }
+

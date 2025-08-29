@@ -1,3 +1,6 @@
+// src/storage/db.firebase.adapter.ts
+// Copyright 2025 Antifraud Services Inc. under the Apache License, Version 2.0.
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { randomUUID } from 'crypto';
 import { Firestore } from '@google-cloud/firestore';

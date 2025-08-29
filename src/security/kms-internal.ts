@@ -1,4 +1,5 @@
 // src/security/kms-internal.ts
+// Copyright 2025 Antifraud Services Inc. under the Apache License, Version 2.0.
 
 import crypto from 'crypto';
 import { EncryptedData } from './dek-kek';

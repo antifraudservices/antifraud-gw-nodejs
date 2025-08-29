@@ -1,8 +1,7 @@
 // src/utils/http-parser.ts
+// Copyright 2025 Antifraud Services Inc. under the Apache License, Version 2.0.
 
 import { URL } from 'url';
-
-// --- Interfaces (from your prototype) ---
 
 export interface DataInRequest {
   fullUrl?: string;
@@ -20,7 +19,7 @@ export interface DataInRequest {
   language?: string;
 }
 
-// --- Helper Functions (from your prototype, confirmed correct) ---
+// --- Helper Functions ---
 
 export function convertUrlEncodedDataToJson(formEncodedData: string): { [key: string]: string; } {
   // ... (Your implementation is solid, no changes needed)
@@ -39,7 +38,6 @@ export function convertUrlEncodedDataToJson(formEncodedData: string): { [key: st
 }
 
 export function convertPlainMessageToJson(message: any, contentType: string): any {
-  // ... (Your implementation is solid, no changes needed)
   try {
     if (contentType.includes('json')) {
       return JSON.parse(message);

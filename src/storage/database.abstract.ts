@@ -1,5 +1,16 @@
+// src/storage/database.abstract.ts
+
 /* Copyright (c) Connecting Solution & Applications Ltd., Conéctate Soluciones y Aplicaciones SL */
 /* Apache License 2.0 */
+
+/**
+ * Represents the configuration metadata for a vault.
+ */
+export interface VaultConfig {
+  id: string;
+  custodian?: string; // The tenant responsible for this vault
+  [key: string]: any;
+}
 
 /**
 * DatabaseAbstract implements asynchronous methods for a structured, multi-tenant database.
@@ -7,11 +18,14 @@
 */
 export abstract class DatabaseAbstract {
   /** Creates a new vault (e.g., for a new tenant). */
-  public abstract createNewVault(vaultConfig?: any): Promise<boolean>;
+  public abstract createNewVault(vaultConfig: VaultConfig): Promise<boolean>;
   
   /** Checks if a vault exists. */
   public abstract vaultExists(vaultId: string): Promise<boolean>;
   
+  /** Retrieves the configuration for a specific vault. */
+  public abstract getVaultConfig(vaultId: string): Promise<VaultConfig | undefined>;
+
   /** Creates a new section within a vault. */
   abstract createNewSection(vaultId: string, sectionId: string): Promise<boolean>
   
@@ -48,3 +62,4 @@ export abstract class DatabaseAbstract {
   /** Permanently removes records marked as deleted. */
   public abstract purge(vaultId: string): Promise<boolean>;
 }
+

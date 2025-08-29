@@ -1,4 +1,6 @@
 // src/auth/AppleTokenVerifier.ts
+// Copyright 2025 Antifraud Services Inc. under the Apache License, Version 2.0.
+
 import { createRemoteJWKSet, jwtVerify } from 'jose';
 
 const APPLE_JWK_URL = new URL('https://appleid.apple.com/auth/keys');

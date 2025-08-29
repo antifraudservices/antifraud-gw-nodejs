@@ -1,4 +1,5 @@
 // src/security/middleware/decodeRequest.ts
+// Copyright 2025 Antifraud Services Inc. under the Apache License, Version 2.0.
 
 import { Request, Response, NextFunction } from 'express';
 import { ICryptography } from '../interfaces/ICryptography';

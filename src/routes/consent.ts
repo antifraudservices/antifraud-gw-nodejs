@@ -1,4 +1,6 @@
 // src/routes/consent.ts
+// Copyright 2025 Antifraud Services Inc. under the Apache License, Version 2.0.
+
 import express from 'express';
 import { getConsentRepository } from '../database/repositories';
 import { verifyIdToken, Provider } from '../auth/verifyIdToken';
